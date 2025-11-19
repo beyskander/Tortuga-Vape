@@ -3,521 +3,570 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tortuga-vape - Recharges Vozol (Version Simple)</title>    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <title>🦎 Tortuga Vape - Recharge Liquide Vozol</title>
     <style>
-        :root {
-            --primary-400: #2DD4BF;
-            --primary-500: #14B8A6;
-            --primary-600: #0D9488;
-            --background-page: #0A0A0A;
-            --background-surface: #18181B;
-            --border-subtle: #27272A;
-            --text-primary: #E4E4E7;
-            --text-secondary: #A1A1AA;
-            --glow-primary: 0 0 24px 0 rgba(45, 212, 191, 0.4);
-            
-            --space-xs: 8px;
-            --space-sm: 16px;
-            --space-md: 24px;
-            --space-lg: 32px;
-            --space-xl: 64px;
-            --space-xxl: 96px;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background-page);
-            color: var(--text-primary);
+            background: linear-gradient(135deg, #0A0A0A 0%, #18181B 100%);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
         }
-
+        
         .container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 20px;
         }
-
-        /* Hero Section - VERSION SIMPLE */
-        .hero {
-            height: 600px;
-            background: 
-                linear-gradient(135deg, var(--background-page) 0%, var(--background-surface) 50%, var(--primary-500) 100%);
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .header h1 {
+            color: #14B8A6;
+            font-size: 4rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(20, 184, 166, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(20, 184, 166, 0.5);
+            }
+            to {
+                text-shadow: 0 0 40px rgba(20, 184, 166, 0.8);
+            }
+        }
+        
+        .header p {
+            color: #94A3B8;
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+        
+        .tortuga-logo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #14B8A6, #0F766E);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            position: relative;
+            font-size: 3rem;
+            box-shadow: 0 0 25px rgba(20, 184, 166, 0.6);
+            animation: float 3s ease-in-out infinite;
         }
-
-        .hero-content h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 64px;
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(20, 184, 166, 0.05);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 20px;
+        }
+        
+        .hero-title {
+            color: #14B8A6;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: var(--space-sm);
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
         }
-
-        .hero-content p {
-            font-size: 24px;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-lg);
-            font-weight: 500;
+        
+        .hero-subtitle {
+            color: #E5E7EB;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-500);
-            color: var(--background-page);
-            padding: 16px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background-color: var(--primary-600);
-            box-shadow: var(--glow-primary);
-            transform: scale(1.05);
-        }
-
-        /* Products Section */
-        .products {
-            padding: var(--space-xxl) 0;
-        }
-
-        .products h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 40px;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: var(--space-xl);
-            color: var(--text-primary);
-        }
-
-        .products-grid {
+        
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: var(--space-lg);
-            max-width: 1000px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
         }
-
+        
         .product-card {
-            background-color: var(--background-surface);
-            padding: var(--space-lg);
-            border-radius: 16px;
-            border: 1px solid var(--border-subtle);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #14B8A6, #0F766E);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
         .product-card:hover {
-            border-color: var(--primary-500);
-            transform: translateY(-8px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(20, 184, 166, 0.25);
+            border-color: rgba(20, 184, 166, 0.5);
         }
-
-        .product-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 40px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: var(--space-lg);
+        
+        .product-card:hover::before {
+            transform: scaleX(1);
         }
-
-        .product-card .divider {
-            height: 1px;
-            background-color: var(--border-subtle);
-            margin-bottom: var(--space-lg);
+        
+        .product-title {
+            color: #14B8A6;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        .price-item {
+        
+        .flavor-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(20, 184, 166, 0.08);
+            border-radius: 16px;
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        
+        .flavor-title {
+            color: #14B8A6;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .flavor-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: var(--space-sm) 0;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(20, 184, 166, 0.15);
+            margin: 5px 0;
         }
-
-        .price-item .type {
-            color: var(--text-secondary);
-            font-size: 16px;
+        
+        .flavor-item:last-child {
+            border-bottom: none;
+        }
+        
+        .flavor-name {
+            font-size: 1.2rem;
+            color: #E5E7EB;
             font-weight: 500;
         }
-
-        .price-item .price {
-            color: var(--text-primary);
-            font-size: 16px;
-            font-weight: 600;
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #14B8A6;
+            background: rgba(20, 184, 166, 0.1);
+            padding: 8px 16px;
+            border-radius: 25px;
+            border: 1px solid rgba(20, 184, 166, 0.3);
         }
-
-        /* Contact Section */
-        .contact {
-            padding: var(--space-xxl) 0;
+        
+        .contact-section {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(15, 118, 110, 0.1));
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 24px;
+            padding: 50px 40px;
             text-align: center;
+            margin: 80px 0;
+            position: relative;
         }
-
-        .contact h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 40px;
-            font-weight: 600;
-            margin-bottom: var(--space-xl);
-            color: var(--text-primary);
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #14B8A6, #0F766E, #14B8A6);
+            border-radius: 24px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: border-glow 3s linear infinite;
         }
-
-        .contact-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-md);
-            margin-bottom: var(--space-xl);
+        
+        @keyframes border-glow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
         }
-
-        .contact-number a {
-            font-family: 'Poppins', sans-serif;
-            font-size: 40px;
-            font-weight: 600;
-            color: var(--text-primary);
+        
+        .contact-title {
+            color: #14B8A6;
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+        
+        .phone-container {
+            margin: 30px 0;
+        }
+        
+        .phone-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #14B8A6;
             text-decoration: none;
-            transition: color 0.25s;
+            display: inline-block;
+            padding: 20px 40px;
+            background: rgba(20, 184, 166, 0.1);
+            border-radius: 20px;
+            border: 3px solid rgba(20, 184, 166, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-shadow: 0 0 20px rgba(20, 184, 166, 0.5);
+            position: relative;
+            overflow: hidden;
         }
-
-        .contact-number a:hover {
-            color: var(--primary-500);
+        
+        .phone-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
         }
-
-        .icon {
-            width: 24px;
-            height: 24px;
-            fill: var(--primary-500);
+        
+        .phone-number:hover {
+            background: rgba(20, 184, 166, 0.2);
+            border-color: #14B8A6;
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 15px 35px rgba(20, 184, 166, 0.4);
         }
-
-        .contact-info {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-lg);
+        
+        .phone-number:hover::before {
+            left: 100%;
         }
-
-        /* QR Code Section */
-        .qr-section {
-            margin-top: var(--space-xl);
-            padding: var(--space-lg);
-            background-color: var(--background-surface);
+        
+        .contact-subtitle {
+            color: #94A3B8;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(20, 184, 166, 0.15);
             border-radius: 16px;
-            border: 1px solid var(--border-subtle);
+            padding: 30px;
             text-align: center;
+            transition: all 0.3s ease;
         }
-
-        .qr-section h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: var(--space-md);
+        
+        .feature-card:hover {
+            background: rgba(20, 184, 166, 0.05);
+            border-color: rgba(20, 184, 166, 0.3);
+            transform: translateY(-5px);
         }
-
-        .qr-code {
-            display: inline-block;
-            padding: 20px;
-            background-color: white;
-            border-radius: 12px;
-            margin-bottom: var(--space-md);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
-
-        .qr-instructions {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: var(--space-md);
+        
+        .feature-title {
+            color: #14B8A6;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
-
-        .download-qr-btn {
-            display: inline-block;
-            background-color: var(--primary-500);
-            color: var(--background-page);
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            cursor: pointer;
+        
+        .feature-text {
+            color: #94A3B8;
+            font-size: 1rem;
+            line-height: 1.6;
         }
-
-        .download-qr-btn:hover {
-            background-color: var(--primary-600);
-            box-shadow: var(--glow-primary);
-            transform: scale(1.05);
-        }
-
-        .status-banner {
-            background: var(--primary-500);
-            color: var(--background-page);
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-
+        
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero {
-                height: 450px;
-            }
-            
-            .hero-content h1 {
-                font-size: 48px;
-            }
-            
-            .hero-content p {
-                font-size: 20px;
-            }
-            
-            .products h2 {
-                font-size: 32px;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-md);
-            }
-            
-            .product-card h3 {
-                font-size: 32px;
-            }
-            
-            .contact h2 {
-                font-size: 32px;
-            }
-            
-            .contact-number a {
-                font-size: 32px;
-            }
-            
             .container {
-                padding: 0 20px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 3rem;
+            }
+            
+            .tortuga-logo {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .product-card {
+                padding: 25px;
+            }
+            
+            .product-title {
+                font-size: 2rem;
+            }
+            
+            .phone-number {
+                font-size: 2.5rem;
+                padding: 15px 25px;
+            }
+            
+            .contact-title {
+                font-size: 2.2rem;
             }
         }
-
-        /* Animations */
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tortuga-logo {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .phone-number {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Scroll animations */
         .fade-in {
-            animation: fadeIn 0.6s ease-in-out;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">🐢 tortuga-vape</h1>
-            <p class="fade-in">La recharge nouvelle génération pour votre Vozol</p>
-            <a href="#contact" class="cta-button fade-in">CONTACTER & COMMANDER</a>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products">
-        <div class="container">
-            <h2>Nos Recharges Vozol</h2>
-            <div class="products-grid">
-                <!-- Vozol 40k -->
-                <div class="product-card fade-in">
-                    <h3>Vozol 40k</h3>
-                    <div class="divider"></div>
-                    <div class="price-item">
-                        <span class="type">Fruité</span>
+    <div class="container">
+        <header class="header">
+            <div class="tortuga-logo">🦎</div>
+            <h1>🦎 Tortuga Vape</h1>
+            <p>Recharge Liquide pour Puff Vozol</p>
+        </header>
+        
+        <section class="hero-section fade-in">
+            <h2 class="hero-title">Qualité Premium • Prix Accessible</h2>
+            <p class="hero-subtitle">
+                Découvrez notre sélection de recharges liquides premium pour vos puff Vozol. 
+                Une large gamme de saveurs fruitées et gourmandes à des prix exceptionnelles.
+            </p>
+        </section>
+        
+        <div class="product-grid">
+            <div class="product-card fade-in">
+                <h2 class="product-title">Vozol 40K</h2>
+                
+                <div class="flavor-section">
+                    <h3 class="flavor-title">🍓 SAVEURS FRUITÉES</h3>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Fraise, Framboise, Myrtille</span>
                         <span class="price">10 DT</span>
                     </div>
-                    <div class="price-item">
-                        <span class="type">Gourmand</span>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Mangue, Ananas, Pomme</span>
+                        <span class="price">10 DT</span>
+                    </div>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Citron, Orange, Tropical</span>
+                        <span class="price">10 DT</span>
+                    </div>
+                </div>
+                
+                <div class="flavor-section">
+                    <h3 class="flavor-title">🍮 SAVEURS GOURMANDES</h3>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Vanille, Caramel, Chocolat</span>
+                        <span class="price">15 DT</span>
+                    </div>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Crème, Biscuit, Tiramisu</span>
+                        <span class="price">15 DT</span>
+                    </div>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Noisette, Praliné, Cappuccino</span>
                         <span class="price">15 DT</span>
                     </div>
                 </div>
-
-                <!-- Vozol 20k -->
-                <div class="product-card fade-in">
-                    <h3>Vozol 20k</h3>
-                    <div class="divider"></div>
-                    <div class="price-item">
-                        <span class="type">Fruité</span>
+            </div>
+            
+            <div class="product-card fade-in">
+                <h2 class="product-title">Vozol 20K</h2>
+                
+                <div class="flavor-section">
+                    <h3 class="flavor-title">🍓 SAVEURS FRUITÉES</h3>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Fraise, Framboise, Myrtille</span>
                         <span class="price">7 DT</span>
                     </div>
-                    <div class="price-item">
-                        <span class="type">Gourmand</span>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Mangue, Ananas, Pomme</span>
+                        <span class="price">7 DT</span>
+                    </div>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Citron, Orange, Tropical</span>
+                        <span class="price">7 DT</span>
+                    </div>
+                </div>
+                
+                <div class="flavor-section">
+                    <h3 class="flavor-title">🍮 SAVEURS GOURMANDES</h3>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Vanille, Caramel, Chocolat</span>
+                        <span class="price">11 DT</span>
+                    </div>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Crème, Biscuit, Tiramisu</span>
+                        <span class="price">11 DT</span>
+                    </div>
+                    <div class="flavor-item">
+                        <span class="flavor-name">Noisette, Praliné, Cappuccino</span>
                         <span class="price">11 DT</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Passez votre commande</h2>
-            <div class="contact-number">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                </svg>
-                <a href="tel:95075000">95075000</a>
+        
+        <section class="features-section fade-in">
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3 class="feature-title">Livraison Rapide</h3>
+                <p class="feature-text">Livraison en 24-48h partout au Maroc</p>
             </div>
-            <p class="contact-info">Contactez-nous pour passer votre commande</p>
-            <a href="tel:95075000" class="cta-button">APPELER MAINTENANT</a>
-        </div>
-
-        <!-- QR Code Section -->
-        <div class="qr-section">
-            <h3>Scannez pour accéder à notre page</h3>
-            <div id="qrcode" class="qr-code"></div>
-            <p class="qr-instructions">Scannez ce QR code pour accéder directement à notre page depuis votre mobile</p>
-            <button class="download-qr-btn" onclick="downloadQRCode()">TÉLÉCHARGER LE QR CODE</button>
-        </div>
-    </section>
-
+            
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3 class="feature-title">Qualité Garantie</h3>
+                <p class="feature-text">Produits officiels et certifiés</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3 class="feature-title">Paiement Sécurisé</h3>
+                <p class="feature-text">Plusieurs moyens de paiement acceptés</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Large Gamme</h3>
+                <p class="feature-text">Plus de 20 saveurs disponibles</p>
+            </div>
+        </section>
+        
+        <section class="contact-section fade-in">
+            <h2 class="contact-title">📞 Contact Direct</h2>
+            <div class="phone-container">
+                <a href="tel:+21239615" class="phone-number">+21239615</a>
+            </div>
+            <p class="contact-subtitle">Appelez-nous pour commander ou poser vos questions !</p>
+            <p class="contact-subtitle">Disponible 7j/7 de 9h à 21h</p>
+        </section>
+    </div>
+    
     <script>
-        // Animation au scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationDelay = '0.2s';
-                        entry.target.classList.add('fade-in');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            elements.forEach(el => observer.observe(el));
-        }
-
-        // Smooth scroll pour les ancres
-        function smoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
-        }
-
-        // Génération du QR Code avec URL fixe
-        function generateQRCode() {
-            // IMPORTANT: Remplacez cette URL par votre vraie URL quand vous mettrez en ligne
-            let pageUrl = 'https://beyskander.github.io/Tortuga-Vape/'; // URL de test
-            
-            // Si vous voulez pointer vers votre vraie page, changez cette ligne :
-            // pageUrl = 'https://votre-domaine.com/votre-page.html';
-            
-            // Créer le QR code
-            const qr = qrcode(0, 'M'); // Version auto, niveau de correction M
-            qr.addData(pageUrl);
-            qr.make();
-            
-            // Générer le HTML du QR code
-            const qrCodeHTML = qr.createImgTag(6, 0);
-            const qrContainer = document.getElementById('qrcode');
-            qrContainer.innerHTML = qrCodeHTML;
-            
-            // Styliser le QR code
-            const qrImg = qrContainer.querySelector('img');
-            if (qrImg) {
-                qrImg.style.width = '200px';
-                qrImg.style.height = '200px';
-                qrImg.style.display = 'block';
-                qrImg.style.margin = '0 auto';
-            }
-            
-            console.log('QR Code généré pour:', pageUrl);
-            
-            // Afficher l'URL pour info
-            const infoDiv = document.createElement('div');
-            infoDiv.innerHTML = `<p style="color: #A1A1AA; font-size: 12px; margin-top: 8px;">QR pointe vers: ${https://beyskander.github.io/Tortuga-Vape/}</p>`;
-            qrContainer.appendChild(infoDiv);
-        }
-
-        // Téléchargement du QR Code
-        function downloadQRCode() {
-            const qrImg = document.querySelector('#qrcode img');
-            if (!qrImg) {
-                alert('QR code non généré. Veuillez recharger la page.');
-                return;
-            }
-
-            // Créer un canvas pour convertir l'image
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            
-            canvas.width = 400;
-            canvas.height = 400;
-            
-            // Charger l'image QR code
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.onload = function() {
-                ctx.fillStyle = 'white';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(img, 50, 50, 300, 300);
-                
-                // Ajouter le texte en bas
-                ctx.fillStyle = '#333';
-                ctx.font = 'bold 20px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillText('tortuga-vape', canvas.width / 2, canvas.height - 30);
-                
-                // Télécharger
-                const link = document.createElement('a');
-                link.download = 'tortuga-vape-qr-code.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            };
-            img.src = qrImg.src;
-        }
-
-        // Initialisation
+        }, observerOptions);
+        
+        // Apply animations to elements
         document.addEventListener('DOMContentLoaded', () => {
-            animateOnScroll();
-            smoothScroll();
-            
-            // Générer le QR code après un court délai
-            setTimeout(() => {
-                generateQRCode();
-            }, 500);
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+        
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add some interactive effects
+        document.addEventListener('mousemove', (e) => {
+            const logo = document.querySelector('.tortuga-logo');
+            if (logo) {
+                const rect = logo.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+                    logo.style.transform = `scale(1.1) rotate(${x / rect.width * 20 - 10}deg)`;
+                } else {
+                    logo.style.transform = 'scale(1) rotate(0deg)';
+                }
+            }
         });
     </script>
 </body>
 </html>
-
-
